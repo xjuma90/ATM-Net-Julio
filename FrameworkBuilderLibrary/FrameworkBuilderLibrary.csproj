@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ATM-NET-Julio\LoggerLibrary\LoggerLibrary.csproj" />
     <ProjectReference Include="..\ConfigurationLibrary\ConfigurationLibrary.csproj" />
   </ItemGroup>
 
