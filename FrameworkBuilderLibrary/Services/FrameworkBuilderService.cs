@@ -4,6 +4,8 @@ using LoggerLibrary.Factories;
 using LoggerLibrary.Interfaces.Factories;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using WebDriverLibrary.Factories;
+using WebDriverLibrary.Interfaces.Factories;
 
 namespace FrameworkBuilderLibrary.Services
 {
@@ -46,6 +48,42 @@ namespace FrameworkBuilderLibrary.Services
                     break;
                 case ServiceLifetime.Scoped:
                     _serviceCollection.AddScoped<ILoggerServiceFactory, LoggerServiceFactory>();
+                    break;
+            }
+
+            return this;
+        }
+
+        public FrameworkBuilderService AddWebDriverConfigurationFactory(ServiceLifetime serviceLifetime)
+        {
+            switch (serviceLifetime)
+            {
+                case ServiceLifetime.Singleton:
+                    _serviceCollection.AddSingleton<IWebDriverConfigurationFactory, WebDriverConfigurationFactory>();
+                    break;
+                case ServiceLifetime.Transient:
+                    _serviceCollection.AddTransient<IWebDriverConfigurationFactory, WebDriverConfigurationFactory>();
+                    break;
+                case ServiceLifetime.Scoped:
+                    _serviceCollection.AddScoped<IWebDriverConfigurationFactory, WebDriverConfigurationFactory>();
+                    break;
+            }
+
+            return this;
+        }
+
+        public FrameworkBuilderService AddWebDriverServiceFactory(ServiceLifetime serviceLifetime)
+        {
+            switch (serviceLifetime)
+            {
+                case ServiceLifetime.Singleton:
+                    _serviceCollection.AddSingleton<IWebDriverServiceFactory, WebDriverServiceFactory>();
+                    break;
+                case ServiceLifetime.Transient:
+                    _serviceCollection.AddTransient<IWebDriverServiceFactory, WebDriverServiceFactory>();
+                    break;
+                case ServiceLifetime.Scoped:
+                    _serviceCollection.AddScoped<IWebDriverServiceFactory, WebDriverServiceFactory>();
                     break;
             }
 
